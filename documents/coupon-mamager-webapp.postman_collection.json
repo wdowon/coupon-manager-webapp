@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "ab512e59-6083-4ff3-9a62-8d8d2eaa4f11",
+		"name": "쿠폰 관리 시스템",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. 회원가입",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/member/signup?userId=testId&userPw=testPw",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"member",
+						"signup"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "testId",
+							"description": "유저 ID"
+						},
+						{
+							"key": "userPw",
+							"value": "testPw",
+							"description": "유저 비밀번호"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. 로그인",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/member/signin?userId=testId&userPw=testPw",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"member",
+						"signin"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "testId",
+							"description": "유저 ID"
+						},
+						{
+							"key": "userPw",
+							"value": "testPw",
+							"description": "유저 비밀번호"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. 쿠폰 생성",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0SWQiLCJpYXQiOjE1OTMzNTI3NzIsImV4cCI6MTU5MzM1NjM3Mn0.ncBmcJAPWmqg-SHizrdmkc76zx1sEQLDcz11NL6Y9mI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "couponCount",
+							"value": "100000",
+							"description": "쿠폰 수량",
+							"type": "text"
+						},
+						{
+							"key": "couponLength",
+							"value": "20",
+							"description": "쿠폰 자리 수",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "expireDayCount",
+							"value": "3",
+							"description": "쿠폰 만료 기간(할당일로부터)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/coupon/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coupon",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. 쿠폰 할당",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYWhhaGhoYSIsImlhdCI6MTU5MzI4NDEwNCwiZXhwIjoxNTkzMjg3NzA0fQ.2W0MXuXpfhlY_OAMrwj9ESO9EGY9n0IkIMNkj_eWF80",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/coupon/assign",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coupon",
+						"assign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. 내 쿠폰 조회",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0SWQiLCJpYXQiOjE1OTMzNDkxODIsImV4cCI6MTU5MzM1Mjc4Mn0.j52ZLTBy4xp_W_rDq9gCrTYXnOctDagEvuEa5QUuydE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/coupon",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coupon"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. 쿠폰 사용",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0SWQiLCJpYXQiOjE1OTMzNTI3ODIsImV4cCI6MTU5MzM1NjM4Mn0.yF5EhTmAZvngwxJcSvb7gFdFIHFNKG7kX_VB_Or5Y80",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/coupon/apply?couponCode=NA487AITPEEH09CFVO4O",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coupon",
+						"apply"
+					],
+					"query": [
+						{
+							"key": "couponCode",
+							"value": "NA487AITPEEH09CFVO4O",
+							"description": "쿠폰코드"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. 쿠폰 사용 취소",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0SWQiLCJpYXQiOjE1OTMzNTI3ODIsImV4cCI6MTU5MzM1NjM4Mn0.yF5EhTmAZvngwxJcSvb7gFdFIHFNKG7kX_VB_Or5Y80",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/coupon/cancel?couponCode=NA487AITPEEH09CFVO4O",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coupon",
+						"cancel"
+					],
+					"query": [
+						{
+							"key": "couponCode",
+							"value": "NA487AITPEEH09CFVO4O",
+							"description": "쿠폰코드"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. 만료 쿠폰 조회",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0SWQiLCJpYXQiOjE1OTMzNTI3ODIsImV4cCI6MTU5MzM1NjM4Mn0.yF5EhTmAZvngwxJcSvb7gFdFIHFNKG7kX_VB_Or5Y80",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/coupon/expired",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coupon",
+						"expired"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
