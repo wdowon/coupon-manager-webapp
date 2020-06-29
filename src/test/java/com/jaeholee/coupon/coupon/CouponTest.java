@@ -198,7 +198,7 @@ public class CouponTest {
     public void F_coupon_apply() throws Exception {
         MvcResult result = mockMvc.perform(post(APPLY_COUPON_URI)
                 .header("Authorization", "Bearer " + token)
-                .param("couponCode", couponCode[0]))
+                .param("couponCode", couponCode[1]))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn();
@@ -215,7 +215,7 @@ public class CouponTest {
     public void G_coupon_apply_fail_already_use() throws Exception {
         MvcResult result = mockMvc.perform(post(APPLY_COUPON_URI)
                 .header("Authorization", "Bearer " + token)
-                .param("couponCode", couponCode[0]))
+                .param("couponCode", couponCode[1]))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn();
@@ -250,7 +250,7 @@ public class CouponTest {
     public void I_coupon_cancel() throws Exception {
         MvcResult result = mockMvc.perform(post(CANCEL_COUPON_URI)
                 .header("Authorization", "Bearer " + token)
-                .param("couponCode", couponCode[0]))
+                .param("couponCode", couponCode[1]))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn();
@@ -267,7 +267,7 @@ public class CouponTest {
     public void J_coupon_apply_fail_already_use() throws Exception {
         MvcResult result = mockMvc.perform(post(CANCEL_COUPON_URI)
                 .header("Authorization", "Bearer " + token)
-                .param("couponCode", couponCode[0]))
+                .param("couponCode", couponCode[1]))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn();

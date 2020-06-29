@@ -37,7 +37,7 @@ Coupon Manager Web application.
 ## 개선고려 필요 포인트
 * 현재 단일 테이블에 쿠폰 데이터를 적재 및 테이블에 로그를 저장하고 있어 부하 이슈 발생 가능.
 * 쿠폰 종류 및 사용 유형별 메타정보 생성(A 쿠폰 이벤트, B 쿠폰 이벤트) 사용하도록 설계 변경 고려 혹은, 유저 ID별 해싱, 혹은 쿠폰 코드별 해싱을 통해 DB샤딩 고려 필요
-    * 메타 데이터 redis 등을 사용하여 캐싱 전략 고려
+    * 메타 데이터(UserId 별 쿠폰 데이터 등) redis 등을 사용하여 캐싱 전략 고려
 * 현재 사용 API 및 생성 API가 하나의 프로젝트에서 사용, 관리자/ 사용자 대상 프로젝트 분리 필요
 * 쿠폰 생성 시 Async를 이용하여 별도 Thread에서 생성을 진행하는데, 생성 요청 시 별도 테이블 등에 쿠폰 생성 진행 기록 후, Thread에서 생성 완료 시 해당 테이블에 완료 기록 하여 생성요청 완료 조회 가능하도록 개선 필요 
 
@@ -46,3 +46,5 @@ Coupon Manager Web application.
     * ![notice.PNG](./documents/notice.PNG)
 * 쿠폰 생성
     * ![create_coupon.PNG](./documents/create_coupon.PNG)
+* ERD
+    * ![erd.PNG](./documents/erd.PNG)
